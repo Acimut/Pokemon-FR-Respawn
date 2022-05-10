@@ -70,11 +70,34 @@ static bool8 New_Respawn(void)
     s8 banco = gSaveBlock1Ptr->location.mapGroup;
     s8 mapa  = gSaveBlock1Ptr->location.mapNum;
 
+/*
+    if (FlagGet(0x200))//si 0x200 es  verdadero
+    {
+        New_Warp(4,2,4,6);
+        return FALSE;
+    }
+
+    if (VarGet(0x4000) == 1)
+    {
+        New_Warp(4,2,4,6);
+        return FALSE;
+    }
+*/
+
     switch ( MAPA(banco,mapa) )
     {
     case MAP_ROUTE1:
-    case MAPA(3,20)://MAP_ROUTE2
+        New_Warp(3,3,0x18,0xC);//ciudad celestes
+        return FALSE;
+        break;
+    case MAPA(3,22):
         New_Warp(MAP_GROUP(PALLET_TOWN_PLAYERS_HOUSE_2F), MAP_NUM(PALLET_TOWN_PLAYERS_HOUSE_2F), 6, 6);
+        return FALSE;
+        break;
+
+    case MAPA(3,20)://MAP_ROUTE2
+        //New_Warp(MAP_GROUP(PALLET_TOWN_PLAYERS_HOUSE_2F), MAP_NUM(PALLET_TOWN_PLAYERS_HOUSE_2F), 6, 6);
+        New_Warp(4,2,4,6);
         return FALSE;
         break;
     case MAPA(3,41)://MAP_ROUTE22
